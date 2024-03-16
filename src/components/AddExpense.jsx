@@ -183,7 +183,7 @@ export default function AddExpense() {
             )) : 'N/A'
           }
         </td>
-        <td>${expense.amount}</td>
+        <td>{expense.amount}</td>
         <td>
           <button onClick={() => clearExpense(index)} className="delete-button">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash" viewBox="0 0 16 16">
@@ -196,7 +196,6 @@ export default function AddExpense() {
   </tbody>
 </table>) : <p>No expenses added.</p>}
 </div>
-
         </div>
     );
 }

@@ -105,7 +105,7 @@ return (
             <ul>
                 {transactions.map((transaction, index) => (
                     <li key={index}>
-                        {users[transaction.from]} will pay {users[transaction.to]} ${transaction.amount}
+                        {users[transaction.from]} will pay {users[transaction.to]} {transaction.amount}
                     </li>
                 ))}
             </ul>
