@@ -1,0 +1,166 @@
+#root {
+  max-width: 1280px;
+  padding: 0rem;
+  text-align: center;
+  /* place-content: center; */
+}
+
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 0rem;
+  background-color: #242424; /* Adjusted for visibility */
+}
+
+.navbar-content {
+  max-width: 1280px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.logo {
+  height: 6em;
+  padding: 0em;
+  will-change: filter;
+  transition: filter 300ms;
+  color: white; /* For visibility */
+}
+
+.logo:hover, .logo.react:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .navbar a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+
+.container.my-3 {
+  padding-top: 1rem; /* Space between nav and button group, adjust as needed */
+}
+
+/* Additional Button Styling - Complements Bootstrap's styles */
+.button-group .btn {
+  margin: 0 5px; /* Ensures buttons have spacing between them */
+}
+
+/* Active button styling if needed beyond Bootstrap's `primary` and `secondary` variants */
+.button-group .btn.active {
+  background-color: #007bff; /* Active button color - Bootstrap primary blue */
+  color: #fff;
+  border-color: #007bff; /* Ensuring consistent border color */
+}
+
+/* Custom styles for content cards */
+.card {
+  padding: 2em;
+  margin-top: 20px; /* Space between button group and content */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Consistency in design with subtle shadow */
+}
+
+/* Styling for documentation links or additional information */
+.read-the-docs {
+  color: #888;
+  text-decoration: underline;
+}
+
+/* Ensures logo animations only apply if preferred by user */
+@media (prefers-reduced-motion: no-preference) {
+  .logo.spin {
+      animation: logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes logo-spin {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+.custom-ol {
+  list-style-type: decimal !important; /* Force numbers to show */
+  padding-left: 100px; /* Adjust as needed */
+  text-align: left;
+  text-indent: 10px;
+  margin-top: 30px;
+  
+  /* padding-left: 10px; */
+  /* margin-left: 20px; Add some left margin if the numbers are hidden or cut off */
+}
+
+
+.active-button {
+  background-color: rgb(51,51,51) !important; /* Example blue color, similar to Bootstrap's primary variant */
+  color: white !important;
+}
+
+.who-should-pay-label {
+  margin-right: 10px;
+}
+
+.who-paid-label {
+  margin-top: 10px;
+}
+
+.Transaction{
+  margin-top: 30px;
+}
+
+
+
