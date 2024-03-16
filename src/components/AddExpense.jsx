@@ -5,6 +5,7 @@ export default function AddExpense() {
         const savedExpenses = localStorage.getItem('expenses');
         return savedExpenses ? JSON.parse(savedExpenses) : [];
     });
+    const [description, setDescription] = useState('');
     const [users, setUsers] = useState([]);
     const [selectedShouldPay, setSelectedShouldPay] = useState([]);
     const [selectedPaid, setSelectedPaid] = useState([]);
@@ -50,13 +51,15 @@ export default function AddExpense() {
     const handleSubmit = (e) => {
         e.preventDefault();
         const amount = e.target.elements.amount.value;
+        const description = e.target.elements.description.value;
 
         if (selectedShouldPay.length === 0 || selectedPaid.length === 0 || !amount) {
             setErrorMessage('Please ensure all fields are filled out and selections are made.');
             return;
         }
 
-        setExpenses([...expenses, { should_pay: selectedShouldPay, paid: selectedPaid, amount }]);
+
+        setExpenses([...expenses, { should_pay: selectedShouldPay, paid: selectedPaid, amount, name: description}]);
         e.target.reset();
         setSelectedShouldPay([]);
         setSelectedPaid([]);
@@ -119,6 +122,17 @@ export default function AddExpense() {
                         </label>
                     ))}
                 </div>
+
+<div>
+  <input
+    className="input-description" // Add a class for styling
+    type="text"
+    name="description"
+    placeholder="Description"
+    required
+  />
+</div>
+
                 <input
                     className="border-2 border-gray-800 mt-4"
                     type="number"
@@ -126,43 +140,63 @@ export default function AddExpense() {
                     placeholder="Amount"
                     required // Ensure this field must be filled
                 />
+
                 <button className="" type="submit">
                     Add
                 </button>
             </form>
 
-            {/* add a button for clearing that expense */}
-            <ol className="custom-ol">
-                {expenses.map((expense, index) => (
-                    <li key={index}>
-                        {/* show the users in user array */}
-                        <div className='Who-should-pay-label-list'>
-                            Who Should Pay:
-                        </div>
-                        {
-                            Array.isArray(expense.should_pay) ? expense.should_pay.map((userIndex, index) => {
-                                return <span key={index}>{users[userIndex]}{index === expense.should_pay.length - 1 ? '' : ', '}</span>;
-                            }) : 'N/A'
-                        }
-                        
-                        <div className='Paid-By-label-list'>
-                        Paid By:
-                        </div>
-                        {
-                            Array.isArray(expense.paid) ? expense.paid.map((userIndex, index) => {
-                                return <span key={index}>{users[userIndex]}{index === expense.paid.length - 1 ? '' : ', '}</span>;
-                            }) : 'N/A'
-                        }
-                        Amount: ${expense.amount}
-                        <button onClick={() => clearExpense(index)} className=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-</svg>
-</button>
-                    </li>
 
-                ))}
-            </ol>
+           
+           <div className='table-for-expense'>
+            {expenses.length > 0 ?( <table className="custom-table">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Who Should Pay</th>
+      <th>Paid By</th>
+      <th>Amount</th>
+        <th>Delete</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {expenses.map((expense, index) => (
+      <tr key={index}>
+       
+        <td>{expense.name || 'N/A'}</td>
+        <td>
+          {Array.isArray(expense.should_pay) ? 
+            expense.should_pay.map((userIndex, idx) => (
+              <span key={idx}>
+                {users[userIndex]}{idx < expense.should_pay.length - 1 ? ', ' : ''}
+              </span>
+            )) : 'N/A'
+          }
+        </td>
+        <td>
+          {Array.isArray(expense.paid) ? 
+            expense.paid.map((userIndex, idx) => (
+              <span key={idx}>
+                {users[userIndex]}{idx < expense.paid.length - 1 ? ', ' : ''}
+              </span>
+            )) : 'N/A'
+          }
+        </td>
+        <td>${expense.amount}</td>
+        <td>
+          <button onClick={() => clearExpense(index)} className="delete-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash" viewBox="0 0 16 16">
+              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6zM14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3h11V2h-11z"/>
+            </svg>
+          </button>
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>) : <p>No expenses added.</p>}
+</div>
+
         </div>
     );
 }

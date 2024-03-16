@@ -162,5 +162,60 @@
   margin-top: 30px;
 }
 
+.custom-table {
+  width: 100%;
+  border-collapse: separate; /* Change to 'separate' to allow border spacing */
+  border-spacing: 0; /* Remove spacing between cells */
+  border-radius: 8px; /* Round the table's corners */
+  overflow: hidden; /* Ensure the inner content doesn't overflow the rounded corners */
+}
+
+.custom-table th, .custom-table td {
+  border: 1px solid #8888882a;
+  padding: 8px;
+}
+
+/* Round top-left corner of the first th */
+.custom-table th:first-child {
+  border-top-left-radius: 8px;
+}
+
+/* Round top-right corner of the last th */
+.custom-table th:last-child {
+  border-top-right-radius: 8px;
+}
+
+/* Apply rounding to the first and last td of each row if no thead is present or if tbody rows are used */
+.custom-table tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+
+.custom-table tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
+}
+
+.custom-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: rgb(51, 51, 51);
+  color: white;
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-button svg {
+  fill: red; /* Color of the trash icon */
+}
+
+.input-description {
+  margin-left: -70px; /* Moves the input 20 pixels to the left */
+  margin-top: 16px; /* Your existing styles */
+  border: #1d2f3e solid 2px; /* Your existing styles */
+}
 
 

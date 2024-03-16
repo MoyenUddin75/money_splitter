@@ -27,6 +27,7 @@ function minimizeTransactions(doneTransactions, numPeople) {
     // let transactions = [];
 
     while (sortedBalance.length) {
+
         if (sortedBalance.length === 2) {
             let [poorPerson, poorAmount] = sortedBalance.shift();
             let [richPerson, richAmount] = sortedBalance.pop();
@@ -41,6 +42,9 @@ function minimizeTransactions(doneTransactions, numPeople) {
 
         let [poorPerson, poorAmount] = sortedBalance.shift();
         let [richPerson, richAmount] = sortedBalance.pop();
+
+        if(poorAmount === 0 && richAmount === 0)
+            break;
 
         let amountPaid = Math.min(-poorAmount, richAmount);
 
@@ -67,6 +71,7 @@ function minimizeTransactions(doneTransactions, numPeople) {
     return transactions;
 }
 
+
 export default function SplitMoney() {  
     const [expenses, setExpenses] = useState(() => {
         const savedExpenses = localStorage.getItem('expenses');
@@ -89,11 +94,14 @@ export default function SplitMoney() {
         // To view the updated transactions in console after they're set
         console.log('Updated transactions:', newTransactions);
     }, [expenses, users]); // Add dependencies here to ensure useEffect reacts to their changes
+return (
+    <div className="Transaction">
+        {/* <h1 className="text-3xl font-bold underline">Split Money</h1> */}
+        <p className="text-red-500">{errorMessage}</p>
 
-    return (
-        <div className="Transaction">
-            {/* <h1 className="text-3xl font-bold underline">Split Money</h1> */}
-            <p className="text-red-500">{errorMessage}</p>
+        {transactions.length === 0 ? (
+            <p>No transaction needed.</p>
+        ) : (
             <ul>
                 {transactions.map((transaction, index) => (
                     <li key={index}>
@@ -101,6 +109,8 @@ export default function SplitMoney() {
                     </li>
                 ))}
             </ul>
-        </div>
-    );
-}
+        )}
+    </div>
+);
+                }
+

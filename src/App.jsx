@@ -24,7 +24,7 @@ export default function App() {
       return;
     }
     setCurrentState(newState);
-    localStorage.setItem("currentState", newState);
+    // localStorage.setItem("currentState", newState);
   };
 
   const getButtonClass = (state) => {
