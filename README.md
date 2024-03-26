@@ -1,8 +1,5 @@
-# React + Vite
+Money Splitter is a web application designed to simplify the process of splitting expenses among friends, family, or colleagues. Whether it's shared household bills, group travel expenses, or dining out, Money Splitter ensures that everyone knows exactly what they owe and to whom. This tool aims to remove the hassle from managing shared expenses, making it easy and fair for all involved parties with minimum number of transaction.
+![image](https://github.com/MoyenUddin75/money_splitter/assets/140981421/bfd533fb-e85e-44bc-9a8f-068f05bcf344)
+![image](https://github.com/MoyenUddin75/money_splitter/assets/140981421/bb33e96c-f3ee-4cb3-81e7-7b016923d479)
+![image](https://github.com/MoyenUddin75/money_splitter/assets/140981421/558f2bb2-985a-4521-b6d8-da3878ff79f4)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
